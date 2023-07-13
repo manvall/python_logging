@@ -1,0 +1,25 @@
+version: 1
+disable_existing_loggers: true
+formatters:
+  formatter1:
+    format: "%(asctime)s - %(levelname)s - %(message)s"
+  formatter2:
+    format: "%(levelname)s: %(message)s @ %(asctime)s"
+handlers:
+  handler1:
+    class: logging.StreamHandler
+    level: DEBUG
+    formatter: formatter1
+    stream: ext://sys.stdout
+  handler2:
+    class: logging.FileHandler
+    level: INFO
+    formatter: formatter2
+    filename: logger2_with_dict_config.log
+loggers:
+  logger1:
+    level: DEBUG
+    handlers: [handler1]
+  logger2:
+    level: INFO
+    handlers: [handler2]
